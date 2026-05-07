@@ -1,0 +1,41 @@
+# ══════════════════════════════════════════════════
+#   EL-KOLIMBE HASH ENGINE :: GitHub Actions
+#   Author  : EL-KOLIMBE
+#   Version : 1.0.0
+# ══════════════════════════════════════════════════
+
+name: 🔐 EL-KOLIMBE Hash Engine
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:        # Lancement manuel possible
+
+jobs:
+  run-hash-elkolimbe:
+    name: 🚀 Exécution du Hash EL-KOLIMBE
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: 📥 Cloner le repository
+        uses: actions/checkout@v3
+
+      - name: 🐍 Installer Python 3
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: 🔍 Vérifier la version Python
+        run: python --version
+
+      - name: ⚙️ Vérifier le fichier de hachage
+        run: ls -la hash_elkolimbe.py
+
+      - name: 🔐 Lancer EL-KOLIMBE Hash Engine
+        run: python hash_elkolimbe.py
+
+      - name: ✅ Exécution terminée avec succès
+        run: echo "EL-KOLIMBE Hash Engine - Done !"
